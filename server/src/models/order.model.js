@@ -1,6 +1,7 @@
 import crypto from "crypto";
-
-let ordersCollection = [];
+export const ordersCollection = [{
+}
+];
 
 // Crear una orden
 export const createOrder = (coffee, userId) => {
@@ -17,6 +18,7 @@ export const createOrder = (coffee, userId) => {
 
 export const getOrders = (userId) => {
   return ordersCollection.filter((coffee) => coffee.userId === userId);
+
 };
 
 // ! FALTA IMPLEMENTAR (NO SE USA EN EL PROYECTO)
@@ -24,7 +26,7 @@ export const getOrderById = (id, userId) => {
   return (
     ordersCollection.find(
       (coffee) => coffee.id === id && coffee.userId === userId
-    ) || null
+    )
   );
 };
 

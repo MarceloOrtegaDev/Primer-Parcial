@@ -1,7 +1,11 @@
 import { hash, genSalt, compare } from "bcrypt";
 import crypto from "crypto";
 
-const usersCollection = [];
+export const usersCollection = [{
+  "username": "marcelo",
+  "email": "marcelo@gmail.com",
+  "password": "1234567"
+}];
 
 // Función para crear un usuario
 export const createUser = async (user) => {
@@ -11,8 +15,7 @@ export const createUser = async (user) => {
 
   const newUser = {
     // Generate a random id
-    id: crypto.randomUUID().toString(),
-    ...user,
+    id: crypto.randomUUID().toString(), user,
     password: hashedPassword,
   };
 
@@ -32,7 +35,7 @@ export const getUserByCredentials = async (email, password) => {
   const findedUser = usersCollection.find((user) => user.email === email);
 
   if (!findedUser) {
-    return null;
+    return console.log("No se encontró la credencial");
   }
 
   const isPasswordMatch = await compare(password, findedUser.password);
@@ -41,5 +44,5 @@ export const getUserByCredentials = async (email, password) => {
     return findedUser;
   }
 
-  return null;
+  return findedUser;
 };

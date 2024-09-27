@@ -17,7 +17,7 @@ export const validateJwt = async (req, res, next) => {
     const { userId } = jwt.verify(token, "secret");
 
     // Se obtiene el usuario por su id
-    const user = await getUserById(userId);
+    const user = await getUserById(userId[0]);
 
     // Si no se encuentra el usuario, se responde con un mensaje de error
     if (!user) {

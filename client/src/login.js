@@ -17,15 +17,17 @@ $form.addEventListener("submit", async (e) => {
   // Realizar una solicitud POST a la API de inicio de sesión
   fetch("http://localhost:4321/auth/sign-in", {
     method: "POST",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(entries),
   }).then((response) => {
     if (response.ok) {
-      // ! REDIRIGIR AL USUARIO A LA PÁGINA PRINCIPAL
+      // Redirigir al usuario a la página principal
+      window.location.href = "/pages/main";
     } else {
-      // ! MOSTRAR UN MENSAJE DE ERROR AL USUARIO
+      res.status(404).json("Ah ocurrido un error")
     }
   });
 });

@@ -26,7 +26,7 @@ app.use("/auth", authRouter);
 app.use("/orders", ordersRouter);
 
 // error handler
-app.use((err, _req, res, _next) => {
+app.use((err, req, res, next) => {
   console.error(err);
 
   res.status(500).json({ message: "Internal server error" });
